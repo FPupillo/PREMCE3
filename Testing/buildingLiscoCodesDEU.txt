@@ -1,0 +1,27 @@
+Hallo,
+
+Vielen Dank für dein Interesse an unserer Studie.
+Um an der Studie teilzunehmen musst du uns zunächst bestätigen, dass du über ein normales Farbsehen verfügst und dass du zwischen 18 und 30 Jahre alt bist.
+Außerdem müssen wir eine eindeutig zuzuordnende anonymisierte ID erstellen. Anhand des Codes können wir außerdem überprüfen ob du bereits an einem Experiment aus unserer Abteilung teilgenommen hast, welches diesem Experiment zu ähnlich ist um erneut teilzunehmen.
+
+Der Code besteht aus zwei Buchstaben und vier Ziffern, die folgende sind:
+
+1. Der erste Buchstabe des Vornamens deiner Mutter
+2. Der dritte Buchstabe des Vornamens deiner Mutter
+3. Der dritte Buchstabe deines Vornamens
+4. Der letzte Buchstabe deines Vornamens
+5. Die Summe deines Geburtstags, Geburtsmonats und Geburtsjahres
+Zum Beispiel:
+
+1. Der erste Buchstabe des Vornamens deiner Mutter: María Aleksándrovna (M)
+2. Der dritte Buchstabe des Vornamens deiner Mutter: María Aleksándrovna (R)
+3. Der dritte Buchstabe deines Vornamens: Wladimir Iljitsch Lenin (A)
+4. Der letzte Buchstabe deines Vornamens: VladimieIlyich Lenin (R)
+5.Die Summe deines Geburtstages, Monats und Jahres (Jahr mit vier Ziffern): 10 + 04 + 1870 = 1884
+
+Am Ende sollte ein Code vorhanden sein, der aus vier Buchstaben und vier Ziffern besteht (z. B. MRAR1884).
+
+Bitte antworte auf diese E-Mail mit der Bestätigung deiner Informationen und deinem erstellten Code.
+
+Danke vielmals,
+Francesco. 

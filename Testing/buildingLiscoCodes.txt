@@ -1,0 +1,28 @@
+Hello, 
+
+thank you very much for your interest in participating in this study.
+First, for participating in this study we need your confirmation that you have normal color vision and that your age is between 18 and 30 years old. 
+Also, we need to create a unique anonymized ID. Using this code is important because it allows us to keep track of previously participated studies while keeping your pareticipation anonymized. 
+
+The code is composed of two letters and four digits, the are the following:
+
+1. The first letter of your mother's first name
+2. The third letter of your mother's first name
+3. The third letter of your first name
+4. The last letter of your first name
+5. The resulting number of adding your birth day, month and year
+
+For example:
+
+1.The first letter of your mother's first name: María Aleksándrovna (M)
+2.The third letter of your mother's first name: María Aleksándrovna (R) 
+3.The third letter of your first name: Vladimir Ilyich Lenin		  (A)
+4.The last letter of your first name: VladimieIlyich Lenin		  (R)
+5.The resulting name of adding your birth day, month and year (year with four digits): 10 + 04 + 1870 = 1884
+
+At the end, there should be a code consisting of four letters and four digits (e.g., MRAR1884)
+
+Please reply to this email with your confirmations and with the code that you created. 
+
+Many thanks, 
+Francesco. 
