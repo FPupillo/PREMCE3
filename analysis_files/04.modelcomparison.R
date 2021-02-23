@@ -27,7 +27,7 @@ names<-list.files()
 # modelfeedbCK<-read.csv("ParameterEstimation.modelfeedbRWCK.csv")
 # modelfeedbObs<-read.csv("ParameterEstimation.modelfeedbRWObs.csv")
 
-modelfeedb<-read.csv("estimated_parameters.csv")
+modelfeedb<-read.csv("estimated_parameters_feedb.csv")
 modelObs<-read.csv("estimated_parameters_obsALL.csv")
 modelBayesian<-read.csv("estimated_parameters_bayesian.csv")
 
@@ -57,24 +57,6 @@ BicAllmelt %>%
   group_by(model)   %>%
   summarize(Mean = mean(BIC, na.rm=TRUE))
 
-
-# re-reference to modelfeedb0
-BicAllmelt$model<-relevel(BicAllmelt$model, ref = "modelfeedb0")
-
-BicMod2<-lmer(BIC~model+(1|Sub), data = BicAllmelt)
-summary(BicMod2)
-
-# Fixed effects:
-#   Estimate Std. Error       df t value Pr(>|t|)    
-#   (Intercept)         91.7169     4.4309  32.8887  20.699  < 2e-16 ***
-#   modelmodelCK         5.4586     1.1447 217.0000   4.769 3.40e-06 ***
-#   modelmodelObs        0.1610     1.1447 217.0000   0.141  0.88826    
-#   modelmodelObsALL     0.1778     1.1447 217.0000   0.155  0.87674    
-#   modelmodelfeedb0.3   2.3743     1.1447 217.0000   2.074   0.03924 *  
-#   modelmodelfeedbQ     3.7335     1.1447 217.0000   3.262  0.00129 ** 
-#   modelmodelfeedbCK    7.2987     1.1447 217.0000   6.376 1.08e-09 ***
-#   modelmodelfeedbObs  10.1834     1.1447 217.0000   8.896 2.31e-16 ***
-
 # plot them
 p <- ggplot(BicAllmelt, aes(model, BIC))
 p+
@@ -99,23 +81,14 @@ table(BicAll$BestModel)
 
 ggplot(BicAll, aes(BestModel))+geom_bar()
 
-# what if we have only two models?
-BicAll$BestModel<-NA
-for (j in 1: nrow(BicAll)){
-  index<-which(BicAll[j,]==min(BicAll[j,c(3:6)]))
-  BicAll$BestModel[j]<-names(BicAll[index])
-}
-
-table(BicAll$BestModel)
-
 # now loglikelihood
 LL<-data.frame(matrix(NA, nrow=10, ncol=0))
 
 LL$Sub<-seq(1:10)
 
-LL$modelfeedb<-modelfeedb$LogLikel
-LL$modelObs<-modelObs$LogLikel
-LL$modelBayesian<-modelBayesian$LogLikel
+LL$modelfeedb<-modelfeedb$LL
+LL$modelObs<-modelObs$LL
+LL$modelBayesian<-modelBayesian$LL
 
 
 LLmelt<-melt(LL, id.vars = "Sub")
@@ -132,7 +105,7 @@ LLmelt %>%
 # Count for how many participants a precise model was the best fit
 LL$BestModel<-NA
 for (j in 1: nrow(LL)){
-  index<-which(LL[j,]==min(LL[j,2:4]))
+  index<-which(LL[j,]==max(LL[j,2:4]))
   LL$BestModel[j]<-names(LL[index])
 }
 

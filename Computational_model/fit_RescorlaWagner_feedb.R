@@ -31,7 +31,7 @@ fit_RescorlaWagner_feedb<-function(data,alphaBound, betaBound, initialQ){
   LL<--NegLL[[2]] # log likelihood
   
   # compute BIC
-  BIC <- BICcompute(length(X0), length(data$scene_cat), NegLL[[2]])
+  BIC <- BICcompute(length(X0), nrow(data), NegLL[[2]])
   
   # Prepare results for output
   data <- list(NegLL[[1]], LL, BIC)

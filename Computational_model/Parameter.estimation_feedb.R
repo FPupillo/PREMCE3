@@ -3,7 +3,7 @@ rm(list=ls())
 library(ggplot2)
 # source the functions
 source("Computational_model/softmax.R")
-source("Computational_model/likelihoodRW.R")
+source("Computational_model/lik_RescorlaWagner_feedb.R")
 source("Computational_model/searchGlobal.R")
 source("Computational_model/fit_RescorlaWagner_feedb.R")
 source("Computational_model/BICcompute.R")
@@ -19,7 +19,7 @@ betaBound<-c(0,'i')
 initialQ<-0
 
 # set the number of the starting points for the optimization function
-startPoints<-2
+startPoints<-1
 
 # initialize matrix to store the parameters
 Parameters<-matrix(NA, nrow = length(participants),ncol = 6) 
@@ -36,13 +36,13 @@ for (j in 1: length(participants)){
   
   # estimate alpha and beta, calculate the time
   start_time<-Sys.time() # take the starting time
-  est<-searchGlobal(DataSub, alphaBound,betaBound, startPoints, initialQ)
+  est<-fit_RescorlaWagner_feedb(DataSub, alphaBound,betaBound, initialQ)
   end_time<-Sys.time() # take the ending time
   print(end_time-start_time) # calculate how long it took to estimate the parameters for that participant
   
   # extract alpha and beta from estimation results
-  alpha<-est$alpha
-  beta<-est$beta
+  alpha<-est$alphabetaPAR[1]
+  beta<-est$alphabetaPAR[2]
   
   # feed the RWM with the alpha and beta obtained to get Qs and PE
   par<-lik_RescorlaWagner_feedb(DataSub, alpha, beta, 2, initialQ)
@@ -68,10 +68,10 @@ library(beepr)
 beep(8)
 
 # save parameters
-write.csv(Parameters, "output_files/estimated_parameters.csv", row.names = F)
+write.csv(Parameters, "output_files/estimated_parameters_feedb.csv", row.names = F)
 
 # save data from reinforcement learning
-write.csv (Datalong, "output_files/RLdata.csv", row.names = F)
+write.csv (Datalong, "output_files/RLdata_feedb.csv", row.names = F)
 
 Datalong$butterfly<-as.factor(Datalong$butterfly)
 levels(Datalong$butterfly)<-c("white", "grey")
